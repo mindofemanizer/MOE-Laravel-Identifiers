@@ -1,0 +1,67 @@
+{
+    "name": "moe/laravel-identifiers",
+    "description": "Reusable, secure identifier toolkit for Laravel: public ID obfuscation (Sqids/UUID/ULID) and human-readable document numbering (random & gap-safe sequential).",
+    "keywords": [
+        "laravel",
+        "sqids",
+        "hashids",
+        "uuid",
+        "ulid",
+        "obfuscation",
+        "idor",
+        "document-number",
+        "invoice-number",
+        "moe"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "MindOfEmanizer",
+            "homepage": "https://github.com/mindofemanizer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/contracts": "^11.0|^12.0|^13.0",
+        "illuminate/database": "^11.0|^12.0|^13.0",
+        "illuminate/support": "^11.0|^12.0|^13.0",
+        "sqids/sqids": "^0.4.1"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.0|^10.0",
+        "pestphp/pest": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MOE\\Identifiers\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MOE\\Identifiers\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MOE\\Identifiers\\IdentifiersServiceProvider"
+            ],
+            "aliases": {
+                "MoeId": "MOE\\Identifiers\\Facades\\MoeId"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "test": "pest",
+        "test-coverage": "pest --coverage"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
