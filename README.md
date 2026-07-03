@@ -14,9 +14,49 @@ Package Laravel untuk **dua kebutuhan identifier** yang sering berulang di setia
 
 ## Instalasi
 
-```bash
-composer require moe/laravel-identifiers
+> Package ini **privat** (tidak dipublikasikan di Packagist). Pilih salah satu cara di bawah sesuai kebutuhan.
+
+### A. Konsumsi via GitHub (untuk project lain / deploy)
+
+Tambahkan repository VCS ke `composer.json` project yang memakai package:
+
+```json
+"repositories": [
+    { "type": "vcs", "url": "https://github.com/mindofemanizer/MOE-Laravel-Identifiers" }
+]
 ```
+
+Lalu require versi rilis:
+
+```bash
+composer require moe/laravel-identifiers:^1.0
+```
+
+Karena repo privat, Composer butuh GitHub Personal Access Token (scope `repo`).
+Set sekali per mesin/server (jangan commit token ke git):
+
+```bash
+composer config --global github-oauth.github.com <TOKEN>
+```
+
+### B. Pengembangan lokal (mengedit package langsung)
+
+Kloning package sejajar dengan project, lalu pakai path repository:
+
+```json
+"repositories": [
+    { "type": "path", "url": "../MOE-Laravel-Identifiers" }
+]
+```
+
+```bash
+composer require moe/laravel-identifiers:@dev
+```
+
+Composer akan membuat junction/symlink ke folder lokal, sehingga setiap
+perubahan pada package langsung terpakai tanpa `composer update`.
+
+### Publish config & migration
 
 Publikasikan config (opsional) dan migration:
 
