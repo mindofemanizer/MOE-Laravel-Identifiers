@@ -59,7 +59,9 @@ trait HasDocumentNumber
                 return $candidate;
             }
 
-            $exists = static::query()
+            // Pakai newQuery() dari instance model, bukan static::query()
+            // untuk menghindari circular boot dependency.
+            $exists = $this->newQuery()
                 ->where($column, $candidate)
                 ->exists();
 
