@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MOE\Identifiers\Facades;
 
 use Illuminate\Support\Facades\Facade;

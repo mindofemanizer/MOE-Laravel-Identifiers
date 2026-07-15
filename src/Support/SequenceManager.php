@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MOE\Identifiers\Support;
 
 use Illuminate\Contracts\Config\Repository as Config;

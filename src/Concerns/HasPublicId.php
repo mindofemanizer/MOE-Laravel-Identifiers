@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MOE\Identifiers\Concerns;
 
 use Illuminate\Database\Eloquent\Builder;
@@ -88,7 +90,7 @@ trait HasPublicId
     /**
      * Resolusi binding dari Public ID kembali ke model.
      */
-    public function resolveRouteBinding($value, $field = null)
+    public function resolveRouteBinding($value, $field = null): ?Model
     {
         // Bila field eksplisit diminta, hormati perilaku default.
         if ($field !== null) {
