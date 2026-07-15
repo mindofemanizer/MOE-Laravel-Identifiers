@@ -37,6 +37,8 @@ class NumberFormatter
      * @param  string       $sequenceKey  Kunci counter untuk token {SEQ}
      *                                     (umumnya nama tabel/model).
      * @param  Carbon|null  $now          Waktu acuan (default: sekarang).
+     * @return string
+     * @throws \MOE\Identifiers\Exceptions\IdentifierException
      */
     public function build(string $format, string $sequenceKey, ?Carbon $now = null): string
     {
@@ -89,6 +91,10 @@ class NumberFormatter
 
     /**
      * Segmen acak sepanjang $length memakai alfabet non-ambigu + CSPRNG.
+     *
+     * @param int $length
+     * @return string
+     * @throws \MOE\Identifiers\Exceptions\IdentifierException
      */
     public function randomSegment(int $length): string
     {

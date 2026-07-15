@@ -25,6 +25,8 @@ class PublicIdCodec
 
     /**
      * Driver aktif: "sqids" | "uuid" | "ulid".
+     *
+     * @return string
      */
     public function driver(): string
     {
@@ -33,6 +35,10 @@ class PublicIdCodec
 
     /**
      * Enkode satu integer id menjadi kode publik (khusus driver sqids).
+     *
+     * @param int $id
+     * @return string
+     * @throws \MOE\Identifiers\Exceptions\IdentifierException
      */
     public function encode(int $id): string
     {
@@ -45,6 +51,10 @@ class PublicIdCodec
      * Dekode kode publik menjadi integer id (khusus driver sqids).
      * Mengembalikan null bila kode tidak valid / tidak dapat didekode
      * ke bentuk kanonik yang sama (mencegah kode palsu diterima).
+     *
+     * @param string $code
+     * @return int|null
+     * @throws \MOE\Identifiers\Exceptions\IdentifierException
      */
     public function decode(string $code): ?int
     {
@@ -53,6 +63,7 @@ class PublicIdCodec
         $numbers = $this->sqids()->decode($code);
 
         if (count($numbers) !== 1) {
+
             return null;
         }
 
@@ -62,6 +73,7 @@ class PublicIdCodec
         // Ini menolak kode yang "kebetulan" bisa didekode tapi bukan bentuk
         // resmi dari id tersebut.
         if ($this->sqids()->encode([$id]) !== $code) {
+
             return null;
         }
 
@@ -70,10 +82,13 @@ class PublicIdCodec
 
     /**
      * Instance Sqids yang dibangun dari konfigurasi (lazy + cached).
+     *
+     * @return Sqids
      */
     protected function sqids(): Sqids
     {
         if ($this->sqids instanceof Sqids) {
+
             return $this->sqids;
         }
 
@@ -96,6 +111,11 @@ class PublicIdCodec
         return $this->sqids;
     }
 
+    /**
+     * @param string $op
+     * @return void
+     * @throws \MOE\Identifiers\Exceptions\IdentifierException
+     */
     protected function assertSqids(string $op): void
     {
         if ($this->driver() !== 'sqids') {

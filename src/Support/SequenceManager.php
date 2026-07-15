@@ -25,6 +25,11 @@ class SequenceManager
     /**
      * Ambil nomor urut berikutnya untuk sebuah key + periode.
      * Baris counter dibuat otomatis bila belum ada.
+     *
+     * @param string $key
+     * @param string $period
+     * @return int
+     * @throws \Throwable
      */
     public function next(string $key, string $period): int
     {
@@ -83,6 +88,9 @@ class SequenceManager
      * Tentukan label periode berdasarkan konfigurasi reset.
      * yearly -> "2026" | monthly -> "2026-07" | daily -> "2026-07-03"
      * never  -> "all"
+     *
+     * @param Carbon|null $now
+     * @return string
      */
     public function periodFor(?Carbon $now = null): string
     {
@@ -96,6 +104,9 @@ class SequenceManager
         };
     }
 
+    /**
+     * @return string
+     */
     protected function resetMode(): string
     {
         return (string) $this->config->get(
@@ -104,6 +115,9 @@ class SequenceManager
         );
     }
 
+    /**
+     * @return string
+     */
     protected function table(): string
     {
         return (string) $this->config->get(

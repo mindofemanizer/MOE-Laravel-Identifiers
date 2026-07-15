@@ -29,6 +29,7 @@ trait HasDocumentNumber
             $column = $model->documentNumberColumn();
 
             if (! empty($model->getAttribute($column))) {
+
                 return; // sudah di-set manual, hormati.
             }
 
@@ -40,6 +41,9 @@ trait HasDocumentNumber
      * Bangun nilai nomor dokumen berdasarkan format model.
      * Untuk format yang mengandung {RAND}, dilakukan retry hingga unik.
      * Untuk {SEQ}, keunikan sudah dijamin oleh counter (tidak perlu retry).
+     *
+     * @return string
+     * @throws \MOE\Identifiers\Exceptions\IdentifierException
      */
     public function generateDocumentNumber(): string
     {
@@ -58,6 +62,7 @@ trait HasDocumentNumber
 
             // {SEQ} sudah dijamin unik oleh counter -> langsung pakai.
             if (! $hasRandom) {
+
                 return $candidate;
             }
 
@@ -68,6 +73,7 @@ trait HasDocumentNumber
                 ->exists();
 
             if (! $exists) {
+
                 return $candidate;
             }
         }
@@ -77,6 +83,9 @@ trait HasDocumentNumber
         );
     }
 
+    /**
+     * @return string
+     */
     public function documentNumberColumn(): string
     {
         return property_exists($this, 'numberColumn')
@@ -84,6 +93,10 @@ trait HasDocumentNumber
             : 'number';
     }
 
+    /**
+     * @return string
+     * @throws \MOE\Identifiers\Exceptions\IdentifierException
+     */
     public function documentNumberFormat(): string
     {
         if (! property_exists($this, 'numberFormat') || empty($this->numberFormat)) {
@@ -95,9 +108,13 @@ trait HasDocumentNumber
         return $this->numberFormat;
     }
 
+    /**
+     * @return string
+     */
     public function documentNumberSequenceKey(): string
     {
         if (property_exists($this, 'numberSequenceKey') && ! empty($this->numberSequenceKey)) {
+
             return $this->numberSequenceKey;
         }
 

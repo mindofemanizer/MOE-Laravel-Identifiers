@@ -13,6 +13,9 @@ use MOE\Identifiers\Support\SequenceManager;
 
 class IdentifiersServiceProvider extends ServiceProvider
 {
+    /**
+     * @return void
+     */
     public function register(): void
     {
         $this->mergeConfigFrom(
@@ -21,10 +24,12 @@ class IdentifiersServiceProvider extends ServiceProvider
         );
 
         $this->app->singleton(PublicIdCodec::class, function ($app) {
+
             return new PublicIdCodec($app->make(Config::class));
         });
 
         $this->app->singleton(SequenceManager::class, function ($app) {
+
             return new SequenceManager(
                 $app->make(ConnectionInterface::class),
                 $app->make(Config::class),
@@ -32,6 +37,7 @@ class IdentifiersServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton(NumberFormatter::class, function ($app) {
+
             return new NumberFormatter(
                 $app->make(Config::class),
                 $app->make(SequenceManager::class),
@@ -39,6 +45,9 @@ class IdentifiersServiceProvider extends ServiceProvider
         });
     }
 
+    /**
+     * @return void
+     */
     public function boot(): void
     {
         if ($this->app->runningInConsole()) {

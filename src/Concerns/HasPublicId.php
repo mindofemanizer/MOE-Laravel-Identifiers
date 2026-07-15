@@ -34,6 +34,7 @@ trait HasPublicId
             $driver = $model->publicIdDriver();
 
             if ($driver === 'sqids') {
+
                 return; // sqids tidak butuh kolom; dihitung dari id.
             }
 
@@ -50,6 +51,8 @@ trait HasPublicId
 
     /**
      * Nilai Public ID untuk ditampilkan / dipakai di URL.
+     *
+     * @return string|null
      */
     public function getPublicIdAttribute(): ?string
     {
@@ -67,6 +70,7 @@ trait HasPublicId
         $column = $this->publicIdColumn();
 
         if ($column === 'public_id') {
+
             return $this->getAttributeFromArray($column);
         }
 
@@ -75,12 +79,17 @@ trait HasPublicId
 
     /**
      * Route model binding memakai Public ID, bukan id mentah.
+     *
+     * @return mixed
      */
     public function getRouteKey(): mixed
     {
         return $this->getPublicIdAttribute();
     }
 
+    /**
+     * @return string
+     */
     public function getRouteKeyName(): string
     {
         // Nilai sentinel; resolusi sebenarnya ditangani resolveRouteBinding().
@@ -89,11 +98,16 @@ trait HasPublicId
 
     /**
      * Resolusi binding dari Public ID kembali ke model.
+     *
+     * @param mixed $value
+     * @param mixed $field
+     * @return Model|null
      */
     public function resolveRouteBinding($value, $field = null): ?Model
     {
         // Bila field eksplisit diminta, hormati perilaku default.
         if ($field !== null) {
+
             return $this->where($field, $value)->first();
         }
 
@@ -103,6 +117,7 @@ trait HasPublicId
             $id = $this->publicIdCodec()->decode((string) $value);
 
             if ($id === null) {
+
                 return null;
             }
 
@@ -118,6 +133,9 @@ trait HasPublicId
 
     /**
      * Cari model berdasarkan Public ID (helper eksplisit).
+     *
+     * @param string $publicId
+     * @return static|null
      */
     public static function findByPublicId(string $publicId): ?static
     {
@@ -131,12 +149,17 @@ trait HasPublicId
      * sudah dipakai Illuminate\Database\Eloquent\Model dengan signature
      * ($query, $value, $field = null) — meng-override-nya dengan signature
      * berbeda akan memicu fatal error "Declaration must be compatible".
+     *
+     * @return Builder
      */
     protected function newPublicIdQuery(): Builder
     {
         return $this->newQuery();
     }
 
+    /**
+     * @return string
+     */
     public function publicIdDriver(): string
     {
         return property_exists($this, 'publicIdDriver')
@@ -144,6 +167,9 @@ trait HasPublicId
             : (string) config('moe-identifiers.public_id.driver', 'sqids');
     }
 
+    /**
+     * @return string
+     */
     public function publicIdColumn(): string
     {
         return property_exists($this, 'publicIdColumn')
@@ -151,6 +177,9 @@ trait HasPublicId
             : (string) config('moe-identifiers.public_id.column', 'public_id');
     }
 
+    /**
+     * @return PublicIdCodec
+     */
     protected function publicIdCodec(): PublicIdCodec
     {
         return app(PublicIdCodec::class);
