@@ -76,7 +76,7 @@ class NumberFormatter
         }
 
         // Deteksi token yang belum tergantikan (typo pada template).
-        if (preg_match('/\{[A-Za-z]+(?::\d+)?\}/', $result, $leftover)) {
+        if (preg_match('/\{[A-Za-z]+(?::\d*)?\}/', $result, $leftover)) {
             throw new IdentifierException(
                 "Token tidak dikenal pada format nomor dokumen: {$leftover[0]}"
             );

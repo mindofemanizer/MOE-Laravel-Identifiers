@@ -64,7 +64,11 @@ trait HasPublicId
         // rekursif ketika publicIdColumn() kebetulan bernama 'public_id'.
         $column = $this->publicIdColumn();
 
-        return $this->attributes[$column] ?? null;
+        if ($column === 'public_id') {
+            return $this->getAttributeFromArray($column);
+        }
+
+        return $this->getAttribute($column);
     }
 
     /**
@@ -78,7 +82,7 @@ trait HasPublicId
     public function getRouteKeyName(): string
     {
         // Nilai sentinel; resolusi sebenarnya ditangani resolveRouteBinding().
-        return 'public_id';
+        return $this->publicIdColumn();
     }
 
     /**
