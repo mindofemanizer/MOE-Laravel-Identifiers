@@ -34,21 +34,21 @@
     },
     "autoload": {
         "psr-4": {
-            "MOE\\Identifiers\\": "src/"
+            "Moe\\Identifiers\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MOE\\Identifiers\\Tests\\": "tests/"
+            "Moe\\Identifiers\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "MOE\\Identifiers\\IdentifiersServiceProvider"
+                "Moe\\Identifiers\\IdentifiersServiceProvider"
             ],
             "aliases": {
-                "MoeId": "MOE\\Identifiers\\Facades\\MoeId"
+                "MoeId": "Moe\\Identifiers\\Facades\\MoeId"
             }
         }
     },

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace MOE\Identifiers\Concerns;
+namespace Moe\Identifiers\Concerns;
 
 use Illuminate\Database\Eloquent\Model;
-use MOE\Identifiers\Exceptions\IdentifierException;
-use MOE\Identifiers\Support\NumberFormatter;
+use Moe\Identifiers\Exceptions\IdentifierException;
+use Moe\Identifiers\Support\NumberFormatter;
 
 /**
  * Kebutuhan 2 — Nomor dokumen yang enak dibaca manusia untuk
@@ -43,7 +43,7 @@ trait HasDocumentNumber
      * Untuk {SEQ}, keunikan sudah dijamin oleh counter (tidak perlu retry).
      *
      * @return string
-     * @throws \MOE\Identifiers\Exceptions\IdentifierException
+     * @throws \Moe\Identifiers\Exceptions\IdentifierException
      */
     public function generateDocumentNumber(): string
     {
@@ -95,7 +95,7 @@ trait HasDocumentNumber
 
     /**
      * @return string
-     * @throws \MOE\Identifiers\Exceptions\IdentifierException
+     * @throws \Moe\Identifiers\Exceptions\IdentifierException
      */
     public function documentNumberFormat(): string
     {

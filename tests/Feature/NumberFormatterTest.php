@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Carbon;
-use MOE\Identifiers\Support\NumberFormatter;
+use Moe\Identifiers\Support\NumberFormatter;
 
 beforeEach(function () {
     // Migrasi tabel counter untuk token {SEQ}.
@@ -58,4 +58,4 @@ it('melempar error untuk token tidak dikenal', function () {
     $f = app(NumberFormatter::class);
 
     $f->build('BAD-{NOPE}', 'x');
-})->throws(\MOE\Identifiers\Exceptions\IdentifierException::class);
+})->throws(\Moe\Identifiers\Exceptions\IdentifierException::class);

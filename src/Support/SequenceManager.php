@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MOE\Identifiers\Support;
+namespace Moe\Identifiers\Support;
 
 use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Database\ConnectionInterface;

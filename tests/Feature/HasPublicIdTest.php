@@ -3,7 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
-use MOE\Identifiers\Concerns\HasPublicId;
+use Moe\Identifiers\Concerns\HasPublicId;
 
 /*
 |--------------------------------------------------------------------------

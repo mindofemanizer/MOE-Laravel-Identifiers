@@ -1,6 +1,6 @@
 <?php
 
-use MOE\Identifiers\Support\PublicIdCodec;
+use Moe\Identifiers\Support\PublicIdCodec;
 
 it('encode lalu decode kembali ke id yang sama (roundtrip)', function () {
     /** @var PublicIdCodec $codec */

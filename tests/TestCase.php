@@ -1,8 +1,8 @@
 <?php
 
-namespace MOE\Identifiers\Tests;
+namespace Moe\Identifiers\Tests;
 
-use MOE\Identifiers\IdentifiersServiceProvider;
+use Moe\Identifiers\IdentifiersServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra

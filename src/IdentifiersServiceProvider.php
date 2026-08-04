@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace MOE\Identifiers;
+namespace Moe\Identifiers;
 
 use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Database\ConnectionInterface;
 use Illuminate\Support\ServiceProvider;
-use MOE\Identifiers\Support\NumberFormatter;
-use MOE\Identifiers\Support\PublicIdCodec;
-use MOE\Identifiers\Support\SequenceManager;
+use Moe\Identifiers\Support\NumberFormatter;
+use Moe\Identifiers\Support\PublicIdCodec;
+use Moe\Identifiers\Support\SequenceManager;
 
 class IdentifiersServiceProvider extends ServiceProvider
 {

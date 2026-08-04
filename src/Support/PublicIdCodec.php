@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace MOE\Identifiers\Support;
+namespace Moe\Identifiers\Support;
 
 use Illuminate\Contracts\Config\Repository as Config;
-use MOE\Identifiers\Exceptions\IdentifierException;
+use Moe\Identifiers\Exceptions\IdentifierException;
 use Sqids\Sqids;
 
 /**
@@ -38,7 +38,7 @@ class PublicIdCodec
      *
      * @param int $id
      * @return string
-     * @throws \MOE\Identifiers\Exceptions\IdentifierException
+     * @throws \Moe\Identifiers\Exceptions\IdentifierException
      */
     public function encode(int $id): string
     {
@@ -54,7 +54,7 @@ class PublicIdCodec
      *
      * @param string $code
      * @return int|null
-     * @throws \MOE\Identifiers\Exceptions\IdentifierException
+     * @throws \Moe\Identifiers\Exceptions\IdentifierException
      */
     public function decode(string $code): ?int
     {
@@ -114,7 +114,7 @@ class PublicIdCodec
     /**
      * @param string $op
      * @return void
-     * @throws \MOE\Identifiers\Exceptions\IdentifierException
+     * @throws \Moe\Identifiers\Exceptions\IdentifierException
      */
     protected function assertSqids(string $op): void
     {

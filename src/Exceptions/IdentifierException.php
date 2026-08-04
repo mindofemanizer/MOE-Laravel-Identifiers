@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MOE\Identifiers\Exceptions;
+namespace Moe\Identifiers\Exceptions;
 
 use RuntimeException;
 

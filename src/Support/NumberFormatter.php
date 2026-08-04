@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace MOE\Identifiers\Support;
+namespace Moe\Identifiers\Support;
 
 use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Support\Carbon;
-use MOE\Identifiers\Exceptions\IdentifierException;
+use Moe\Identifiers\Exceptions\IdentifierException;
 
 /**
  * Mengubah template nomor dokumen menjadi string final.
@@ -38,7 +38,7 @@ class NumberFormatter
      *                                     (umumnya nama tabel/model).
      * @param  Carbon|null  $now          Waktu acuan (default: sekarang).
      * @return string
-     * @throws \MOE\Identifiers\Exceptions\IdentifierException
+     * @throws \Moe\Identifiers\Exceptions\IdentifierException
      */
     public function build(string $format, string $sequenceKey, ?Carbon $now = null): string
     {
@@ -94,7 +94,7 @@ class NumberFormatter
      *
      * @param int $length
      * @return string
-     * @throws \MOE\Identifiers\Exceptions\IdentifierException
+     * @throws \Moe\Identifiers\Exceptions\IdentifierException
      */
     public function randomSegment(int $length): string
     {

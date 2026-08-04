@@ -76,7 +76,7 @@ Encode reversible dari integer PK. **Tidak** butuh kolom tambahan.
 
 ```php
 use Illuminate\Database\Eloquent\Model;
-use MOE\Identifiers\Concerns\HasPublicId;
+use Moe\Identifiers\Concerns\HasPublicId;
 
 class User extends Model
 {
@@ -129,7 +129,7 @@ Nomor dokumen berbasis format token. Wajib set `$numberFormat`.
 
 ```php
 use Illuminate\Database\Eloquent\Model;
-use MOE\Identifiers\Concerns\HasDocumentNumber;
+use Moe\Identifiers\Concerns\HasDocumentNumber;
 
 class Invoice extends Model
 {
@@ -178,7 +178,7 @@ $invoice->number; // "INV-2026-00001", lalu "INV-2026-00002", dst.
 Untuk encode/decode manual (driver sqids):
 
 ```php
-use MOE\Identifiers\Facades\MoeId;
+use Moe\Identifiers\Facades\MoeId;
 
 MoeId::encode(42);        // "bF3aX9kQ"
 MoeId::decode('bF3aX9kQ'); // 42 (atau null jika kode tidak valid)

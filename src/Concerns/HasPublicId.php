@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace MOE\Identifiers\Concerns;
+namespace Moe\Identifiers\Concerns;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use MOE\Identifiers\Support\PublicIdCodec;
+use Moe\Identifiers\Support\PublicIdCodec;
 
 /**
  * Kebutuhan 1 — Sembunyikan primary key integer pada URL/API publik.
