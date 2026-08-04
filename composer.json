@@ -21,6 +21,10 @@
             "homepage": "https://github.com/mindofemanizer"
         }
     ],
+    "support": {
+        "issues": "https://github.com/mindofemanizer/MOE-Laravel-Identifiers/issues",
+        "source": "https://github.com/mindofemanizer/MOE-Laravel-Identifiers"
+    },
     "require": {
         "php": "^8.2",
         "illuminate/contracts": "^11.0|^12.0|^13.0",
